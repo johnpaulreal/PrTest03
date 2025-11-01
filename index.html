@@ -3,69 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>John Paul T. Real - Personal Introduction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0b2e 0%, #3d2352 100%);
+            background-attachment: fixed;
+            color: #e2d9f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(30, 15, 50, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(188, 72, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700, #bc48ff, #ffd700);
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffd700;
+            box-shadow: 0 0 25px rgba(188, 72, 255, 0.7);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            object-fit: cover;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(188, 72, 255, 0.9);
+        }
+
+        .avatar-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #bc48ff;
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin: 20px 0 10px;
+            text-shadow: 0 2px 10px rgba(188, 72, 255, 0.5);
+            font-family: 'Georgia', serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #bc48ff;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(40, 20, 70, 0.5);
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+        }
+
+        h2 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: #bc48ff;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .interest-item {
+            background: rgba(188, 72, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(188, 72, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .interest-item:hover {
+            background: rgba(188, 72, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .game-item {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .game-item:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .game-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin: 30px 0;
+            padding: 20px;
+            border-top: 1px solid rgba(188, 72, 255, 0.3);
+            border-bottom: 1px solid rgba(188, 72, 255, 0.3);
+            color: #bc48ff;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(188, 72, 255, 0.2);
+            color: #ffd700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(188, 72, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(188, 72, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .games {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .games {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<style>
-    body {
-        background: #000000;
-        background: -webkit-linear-gradient(0deg, #000000 0%, #bc48ff 100%);
-        background: linear-gradient(0deg, #000000 0%, #bc48ff 100%);
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-    }
-    h4 {
-        text-align: center;
-        font-size: 25px;
-        color: blueviolet;
-        font-family: cursive;
-
-    }
-
-    p{
-        text-align: justify;
-        font-size: 20px;
-        color: blueviolet;
-        font-family: cursive;
-        font-style: italic;
-        
-        
-    }
-
-    img {
-        display: block;
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        width: 250px;
-        height: 250px;
-        border: 18px;
-        border-radius: 50%;
-        border-style: double;
-        border-color: yellow;
-        background-color: blueviolet;
-        
-    }
-</style>
 <body>
-    <img src="/PrTest03/images/s.jpg" alt="avatar">
-    <h4><bold style="color: yellow;">[</bold>Let's get to know each Other!!!<bold style="color: yellow;">]</bold></h4>
-    <p>
-        Hello! My name is <bold style="color: yellow;">JOHN PAUL T. REAL</bold>, and My nickname is <bold style="color: yellow;">PAU</bold>, and I am from <bold style="color: yellow;">BRGY.60-B MADILADIG LAOAG CITY</bold>, and I am <bold style="color: yellow;">19 years old</bold>.
-         I am currently a <bold style="color: yellow;">second year college student</bold> studying <bold style="color: yellow;">BS INDUSTRIAL TECHNOLOGY major in COMPUTER TECHNOLOGY</bold>.
-        I am thrilled to have this opportunity to introduce myself and share a bit about my journey as a student, and attending college has always been a dream of mine. <bold style="color: yellow;">While growing up, I was always curious about the world around me and had a strong passion for learning even i'm not smart</bold>.
-        This drove me to excel academically and ultimately pursue higher education to be an degree holder in my family.
-        From the moment I stepped foot onto the University of <bold style="color: yellow;">MARIANO MARCOS STATE UNIVERSITY College of Industrial Technology</bold>, I knew that I was embarking on a transformative journey of self-discovery and growth.
-        In my free time, I enjoy reading manga and wattpad, and exploring new things that i like, and practicing my skills in programming because being an a slow learner is not easy. I also love playing online games like ML,COD,VALORANT and DOTA. I love eating sweet foods anything that sweets is my favorite.
-        As a college student, I have embraced the opportunities, challenges, and experiences that come with this phase of life.
-        I am excited about the future and the possibilities that lie ahead. Through my college journey, I hope to gain valuable knowledge, skills, and experiences that will shape my personal and professional growth.
-        Thank you for taking the time to learn a little bit about me. I look forward to meeting and connecting with fellow students and exchanging ideas during my time here at college.
-    </p>
-        
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="avatar-container">
+                <img src="/PrTest03/images/s.jpg" alt="John Paul T. Real" class="avatar">
+                <div class="avatar-frame"></div>
+            </div>
+            <h1>John Paul T. Real</h1>
+            <div class="tagline">BS Industrial Technology - Computer Technology Major</div>
+        </div>
 
+        <div class="section">
+            <h2><i class="fas fa-user"></i> About Me</h2>
+            <p>
+                Hello! My name is <span class="highlight">John Paul T. Real</span>, and my nickname is <span class="highlight">Pau</span>. 
+                I am <span class="highlight">19 years old</span> and from <span class="highlight">Brgy. 60-B Madiladig, Laoag City</span>.
+            </p>
+            <p>
+                I am currently a <span class="highlight">second year college student</span> studying 
+                <span class="highlight">BS Industrial Technology major in Computer Technology</span> at 
+                <span class="highlight">Mariano Marcos State University College of Industrial Technology</span>.
+            </p>
+        </div>
 
+        <div class="section">
+            <h2><i class="fas fa-graduation-cap"></i> My Journey</h2>
+            <p>
+                Attending college has always been a dream of mine. While growing up, I was always curious about the world around me and had a strong passion for learning, 
+                <span class="highlight">even though I don't always consider myself the smartest person</span>. This drove me to excel academically and ultimately pursue higher education to become a degree holder in my family.
+            </p>
+            <p>
+                From the moment I stepped foot onto the university campus, I knew that I was embarking on a transformative journey of self-discovery and growth.
+            </p>
+        </div>
 
+        <div class="section">
+            <h2><i class="fas fa-heart"></i> Interests & Hobbies</h2>
+            <p>In my free time, I enjoy:</p>
+            <div class="interests">
+                <div class="interest-item">Reading Manga</div>
+                <div class="interest-item">Reading Wattpad</div>
+                <div class="interest-item">Exploring New Things</div>
+                <div class="interest-item">Practicing Programming</div>
+                <div class="interest-item">Eating Sweet Foods</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-gamepad"></i> Favorite Games</h2>
+            <p>I love playing online games like:</p>
+            <div class="games">
+                <div class="game-item">
+                    <div class="game-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div>Mobile Legends</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+                    <div>Call of Duty</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon"><i class="fas fa-gun"></i></div>
+                    <div>Valorant</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon"><i class="fas fa-dragon"></i></div>
+                    <div>DOTA 2</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-star"></i> My Perspective</h2>
+            <p>
+                As a college student, I have embraced the opportunities, challenges, and experiences that come with this phase of life. 
+                <span class="highlight">Being a slow learner is not easy</span>, but it has taught me persistence and the value of consistent effort.
+            </p>
+            <p>
+                I am excited about the future and the possibilities that lie ahead. Through my college journey, I hope to gain valuable knowledge, skills, and experiences that will shape my personal and professional growth.
+            </p>
+        </div>
+
+        <div class="quote">
+            "Thank you for taking the time to learn a little bit about me. I look forward to meeting and connecting with fellow students and exchanging ideas during my time here at college."
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating background elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingContainer = document.getElementById('floatingElements');
+            const colors = ['rgba(188, 72, 255, 0.1)', 'rgba(255, 215, 0, 0.1)', 'rgba(255, 255, 255, 0.05)'];
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                const size = Math.random() * 100 + 20;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.background = color;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.animationDelay = `${Math.random() * 15}s`;
+                element.style.animationDuration = `${15 + Math.random() * 10}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+        });
+    </script>
 </body>
 </html>
